@@ -1,0 +1,274 @@
+@import "tailwindcss";
+
+/* ============================================
+   NEXCENT — DESIGN SYSTEM (from Figma)
+   All tokens extracted from your Figma file
+   ============================================ */
+
+@layer base {
+
+  /* ------------------------------------------
+     CSS VARIABLES — All Figma Design Tokens
+  ------------------------------------------ */
+  :root {
+
+    /* === BRAND COLORS === */
+    --color-primary:        #4CAF4F;   /* Brand/Primary — green buttons, accents */
+    --color-primary-hover:  #388E3B;   /* Darker green on hover */
+    --color-primary-light:  #E8F5E9;   /* Tint/T5 — light green backgrounds */
+    --color-primary-tint:   #C8E6C9;   /* Tint/T4 */
+    --color-secondary:      #263238;   /* Brand/Secondary — footer, dark sections */
+    --color-secondary-dark: #103E13;   /* Shade/S5 */
+    --color-secondary-mid:  #388E3B;   /* Shade/S2 */
+
+    /* === NEUTRAL COLORS === */
+    --color-white:          #FFFFFF;   /* Default/White */
+    --color-silver:         #F5F7FA;   /* Neutral/Silver — page background */
+    --color-dark-grey:      #4D4D4D;   /* Neutral/D_Grey — headings */
+    --color-grey:           #717171;   /* Neutral/Grey — body text, descriptions */
+    --color-text:           #18191F;   /* Text/Gray 900 — nav links, dark text */
+    --color-border:         #EAEAEA;   /* Dividers, borders */
+    --color-shadow:         rgba(171, 190, 209, 0.2); /* Card shadows */
+
+    /* === TYPOGRAPHY — Font Family === */
+    --font-primary: 'Inter', sans-serif;
+
+    /* === TYPOGRAPHY — Font Sizes === */
+    --text-h1:    64px;   /* Heading/Headline 1 */
+    --text-h2:    36px;   /* Heading/Headline 2 */
+    --text-h3:    28px;   /* Heading/Headline 3 */
+    --text-body:  16px;   /* Body/Body 2 */
+    --text-label: 14px;   /* Label/Medium Label */
+    --text-small: 12px;
+
+    /* === TYPOGRAPHY — Line Heights === */
+    --leading-h1:    76px;
+    --leading-h2:    44px;
+    --leading-h3:    36px;
+    --leading-body:  24px;
+    --leading-label: 20px;
+
+    /* === SPACING === */
+    --spacing-xs:  8px;
+    --spacing-sm:  16px;
+    --spacing-md:  24px;
+    --spacing-lg:  32px;
+    --spacing-xl:  48px;
+    --spacing-2xl: 64px;
+    --spacing-3xl: 96px;
+
+    /* === LAYOUT === */
+    --container-width:  1440px;
+    --container-px:     144px;   /* Page horizontal padding */
+    --navbar-height:    84px;
+
+    /* === BORDER RADIUS === */
+    --radius-sm:   4px;   /* Buttons */
+    --radius-md:   6px;   /* Auth buttons */
+    --radius-lg:   8px;   /* Cards */
+    --radius-full: 50%;   /* Circles */
+
+    /* === SHADOWS === */
+    --shadow-card: 0px 2px 4px 0px rgba(171, 190, 209, 0.2);
+    --shadow-md:   0px 4px 16px 0px rgba(171, 190, 209, 0.4);
+  }
+
+  /* ------------------------------------------
+     GLOBAL RESET & BASE STYLES
+  ------------------------------------------ */
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
+  body {
+    font-family: var(--font-primary);
+    background-color: var(--color-silver);
+    color: var(--color-dark-grey);
+    line-height: var(--leading-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ------------------------------------------
+     TYPOGRAPHY BASE STYLES
+  ------------------------------------------ */
+
+  h1 {
+    font-size: var(--text-h1);
+    font-weight: 600;
+    line-height: var(--leading-h1);
+    color: var(--color-dark-grey);
+    font-family: var(--font-primary);
+  }
+
+  h2 {
+    font-size: var(--text-h2);
+    font-weight: 600;
+    line-height: var(--leading-h2);
+    color: var(--color-dark-grey);
+    font-family: var(--font-primary);
+  }
+
+  h3 {
+    font-size: var(--text-h3);
+    font-weight: 700;
+    line-height: var(--leading-h3);
+    color: var(--color-dark-grey);
+    font-family: var(--font-primary);
+  }
+
+  p {
+    font-size: var(--text-body);
+    font-weight: 400;
+    line-height: var(--leading-body);
+    color: var(--color-grey);
+    font-family: var(--font-primary);
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--color-primary);
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  button {
+    font-family: var(--font-primary);
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: all 0.2s ease;
+  }
+}
+
+/* ------------------------------------------
+   REUSABLE COMPONENT CLASSES (@layer components)
+------------------------------------------ */
+
+@layer components {
+
+  /* === LAYOUT === */
+  .container-main {
+    @apply w-full max-w-[1440px] mx-auto px-[144px];
+  }
+
+  .section {
+    @apply w-full py-[64px] px-[144px];
+  }
+
+  /* === BUTTONS === */
+
+  /* Primary green button — e.g. "Register", "Get a Demo" */
+  .btn-primary {
+    @apply px-8 py-[14px] bg-[#4CAF4F] text-white text-[16px] font-medium
+           leading-[24px] rounded-[4px] hover:bg-[#388E3B] transition-colors
+           cursor-pointer;
+  }
+
+  /* Outline / ghost button — e.g. "Login" */
+  .btn-outline {
+    @apply px-5 py-[10px] rounded-[6px] text-[#4CAF4F] text-[14px]
+           font-medium hover:bg-[#E8F5E9] transition-colors cursor-pointer
+           bg-transparent;
+  }
+
+  /* Solid small button — e.g. "Sign up" in navbar */
+  .btn-solid {
+    @apply px-5 py-[10px] rounded-[6px] bg-[#4CAF4F] text-white text-[14px]
+           font-medium hover:bg-[#388E3B] transition-colors cursor-pointer;
+  }
+
+  /* === CARDS === */
+  .card {
+    @apply bg-white rounded-[8px] shadow-[0px_2px_4px_0px_rgba(171,190,209,0.2)]
+           hover:shadow-md transition-shadow;
+  }
+
+  /* === NAVBAR === */
+  .navbar {
+    @apply bg-[#F5F7FA] w-full h-[84px] flex items-center
+           justify-between px-[105px];
+  }
+
+  .nav-link {
+    @apply text-[16px] text-[#18191F] font-normal
+           hover:text-[#4CAF4F] transition-colors;
+  }
+
+  .nav-link-active {
+    @apply text-[16px] text-[#4CAF4F] font-medium;
+  }
+
+  /* === SECTION HEADINGS === */
+  .section-title {
+    @apply text-[36px] font-semibold leading-[44px] text-[#4D4D4D];
+  }
+
+  .section-desc {
+    @apply text-[16px] font-normal leading-[24px] text-[#717171];
+  }
+
+  /* === HERO === */
+  .hero-title {
+    @apply text-[64px] font-semibold leading-[76px] text-[#4D4D4D];
+  }
+
+  .hero-title-highlight {
+    @apply text-[#4CAF4F];
+  }
+
+  /* === FOOTER === */
+  .footer-dark {
+    @apply bg-[#263238] text-white;
+  }
+
+  .footer-link {
+    @apply text-[14px] font-normal leading-[20px] text-[#C8D4DA]
+           hover:text-[#4CAF4F] transition-colors;
+  }
+}
+
+/* ------------------------------------------
+   UTILITY CLASSES (@layer utilities)
+------------------------------------------ */
+
+@layer utilities {
+
+  /* Text color utilities */
+  .text-primary    { color: var(--color-primary); }
+  .text-secondary  { color: var(--color-secondary); }
+  .text-dark-grey  { color: var(--color-dark-grey); }
+  .text-grey       { color: var(--color-grey); }
+  .text-nexcent    { color: var(--color-text); }
+
+  /* Background utilities */
+  .bg-silver       { background-color: var(--color-silver); }
+  .bg-primary      { background-color: var(--color-primary); }
+  .bg-primary-light{ background-color: var(--color-primary-light); }
+  .bg-secondary    { background-color: var(--color-secondary); }
+
+  /* Shadow utilities */
+  .shadow-card     { box-shadow: var(--shadow-card); }
+  .shadow-card-md  { box-shadow: var(--shadow-md); }
+
+  /* Smooth transitions */
+  .transition-fast { transition: all 0.15s ease; }
+  .transition-base { transition: all 0.2s ease; }
+  .transition-slow { transition: all 0.3s ease; }
+}
